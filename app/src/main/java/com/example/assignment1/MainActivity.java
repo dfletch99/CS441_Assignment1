@@ -13,16 +13,19 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Locale;
+import java.util.*;
 
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     boolean isImperial = true;
+    boolean inDegreeMode = false;
+    boolean cats = false;
 
-    double inch = 0.0, foot = 0.0, yard = 0.0, mile = 0.0;
+    double tiny = 0.0, small = 0.0, medium = 0.0, large = 0.0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView tv1 = findViewById(R.id.tv1), tv2 = findViewById(R.id.tv2), tv3 = findViewById(R.id.tv3), tv4 = findViewById(R.id.tv4);
         final EditText et1 = findViewById(R.id.et1), et2 = findViewById(R.id.et2), et3 = findViewById(R.id.et3), et4 = findViewById(R.id.et4);
+        final ImageView img = (ImageView)findViewById(R.id.catpicture);
 
         setSystem("imperial", tv1, tv2, tv3, tv4, et1, et2, et3, et4);
 
         FloatingActionButton calculate = findViewById(R.id.middle);
         FloatingActionButton reset = findViewById(R.id.right);
-
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 boolean validInput = true;
                 int emptyCounter = 0;
                 if(TextUtils.isEmpty(et1.getText())) emptyCounter++;
-                else inch = Double.parseDouble(et1.getText().toString());
+                else tiny = Double.parseDouble(et1.getText().toString());
                 if(TextUtils.isEmpty(et2.getText())) emptyCounter++;
-                else foot = Double.parseDouble(et2.getText().toString());
+                else small = Double.parseDouble(et2.getText().toString());
                 if(TextUtils.isEmpty(et3.getText())) emptyCounter++;
-                else yard = Double.parseDouble(et3.getText().toString());
+                else medium = Double.parseDouble(et3.getText().toString());
                 if(TextUtils.isEmpty(et4.getText())) emptyCounter++;
-                else mile = Double.parseDouble(et4.getText().toString());
+                else large = Double.parseDouble(et4.getText().toString());
 
                 if(emptyCounter != 3){
                     if(emptyCounter != 4) Snackbar.make(view, "Please reset values to enter another conversion", Snackbar.LENGTH_LONG)
@@ -71,59 +74,88 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(validInput) {
                     if (!TextUtils.isEmpty(et1.getText())) {
-                        if(isImperial) {
-                            foot = inch / 12;
-                            yard = foot / 3;
-                            mile = foot / 5280;
+                        if(!inDegreeMode) {
+                            if (isImperial) {
+                                small = tiny / 12;
+                                medium = small / 3;
+                                large = small / 5280;
+                            } else {
+                                small = tiny / 100;
+                                medium = small / 1000;
+                                large = medium / 299792;
+                            }
                         }
                         else{
-                            foot = inch / 100;
-                            yard = foot / 1000;
-                            mile = yard / 299792;
+                            small = (tiny - 32) * (5.0/9.0);
+                            medium = small + 273.15;
+                            large = (int)(100*Math.random() + 10);
                         }
                     } else if (!TextUtils.isEmpty(et2.getText())) {
-                        if(isImperial) {
-                            inch = foot * 12;
-                            yard = foot / 3;
-                            mile = foot / 5280;
+                        if(!inDegreeMode) {
+                            if (isImperial) {
+                                tiny = small * 12;
+                                medium = small / 3;
+                                large = small / 5280;
+                            } else {
+                                tiny = small * 100;
+                                medium = small / 1000;
+                                large = medium / 299792;
+                            }
                         }
                         else{
-                            inch = foot * 100;
-                            yard = foot / 1000;
-                            mile = yard / 299792;
+                            tiny = small * (5.0/9.0) + 32;
+                            medium = small + 273.15;
+                            large = (int)(100*Math.random()+10);
                         }
                     } else if (!TextUtils.isEmpty(et3.getText())) {
-                        if(isImperial) {
-                            foot = yard * 3;
-                            inch = foot * 12;
-                            mile = foot / 5280;
+                        if(!inDegreeMode) {
+                            if (isImperial) {
+                                small = medium * 3;
+                                tiny = small * 12;
+                                large = small / 5280;
+                            } else {
+                                small = medium * 1000;
+                                tiny = small * 100;
+                                large = medium / 299792;
+                            }
                         }
                         else{
-                            foot = yard * 1000;
-                            inch = foot * 100;
-                            mile = yard / 299792;
+                            small = medium - 273.15;
+                            tiny = small * (5.0/9.0) + 32;
+                            large = (int)(100*Math.random()+10);
                         }
                     } else {
-                        if(isImperial) {
-                            foot = mile * 5280;
-                            yard = foot / 3;
-                            inch = foot * 12;
+                        if(!inDegreeMode) {
+                            if (isImperial) {
+                                small = large * 5280;
+                                medium = small / 3;
+                                tiny = small * 12;
+                            } else {
+                                medium = large * 299792;
+                                small = medium * 1000;
+                                tiny = small * 100;
+                            }
                         }
                         else{
-                            yard = mile * 299792;
-                            foot = yard * 1000;
-                            inch = foot * 100;
+                            cats = true;
+                            et1.setText("C A T S");
+                            et2.setText("C A T S");
+                            et3.setText("C A T S");
+                            et4.setText("C A T S");
+                            img.setVisibility(View.VISIBLE);
                         }
                     }
-                    et1.setText(String.format(Locale.US, "%.2f", inch));
-                    et2.setText(String.format(Locale.US, "%.2f", foot));
-                    et3.setText(String.format(Locale.US, "%.2f", yard));
-                    if(isImperial) {
-                        et4.setText(String.format(Locale.US, "%.2f", mile));
+                    if(!cats) {
+                        et1.setText(String.format(Locale.US, "%.2f", tiny));
+                        et2.setText(String.format(Locale.US, "%.2f", small));
+                        et3.setText(String.format(Locale.US, "%.2f", medium));
+                        if (isImperial) {
+                            et4.setText(String.format(Locale.US, "%.2f", large));
+                        } else {
+                            et4.setText(String.format(Locale.US, "%.9f", large));
+                        }
                     }
-                    else {
-                        et4.setText(String.format(Locale.US, "%.9f", mile));
-                    }
+                    cats = false;
                 }
             }
         });
@@ -137,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setSystem(String s, TextView tv1, TextView tv2, TextView tv3, TextView tv4, EditText et1, EditText et2, EditText et3, EditText et4){
-        if(!s.equals("imperial")){
+        if(s.equals("metric")){
             tv1.setText("Centimeters");
             tv2.setText("Meters");
             tv3.setText("Kilometers");
@@ -147,8 +179,9 @@ public class MainActivity extends AppCompatActivity {
             et3.setHint("Enter a value in kilometers");
             et4.setHint("Enter a value in light-seconds");
             isImperial = false;
+            inDegreeMode = false;
         }
-        else{
+        else if(s.equals("imperial")){
             tv1.setText("Inches");
             tv2.setText("Feet");
             tv3.setText("Yards");
@@ -158,6 +191,18 @@ public class MainActivity extends AppCompatActivity {
             et3.setHint("Enter a value in yards");
             et4.setHint("Enter a value in miles");
             isImperial = true;
+            inDegreeMode = false;
+        }
+        else{
+            tv1.setText("Fahrenheit");
+            tv2.setText("Celsius");
+            tv3.setText("Kelvin");
+            tv4.setText("Cats");
+            et1.setHint("Enter a temperature in F");
+            et2.setHint("Enter a temperature in C");
+            et3.setHint("Enter a temperature in K");
+            et4.setHint("Enter a number of Cats");
+            inDegreeMode = true;
         }
     }
 
@@ -181,6 +226,13 @@ public class MainActivity extends AppCompatActivity {
             ((EditText) findViewById(R.id.et3)).getText().clear();
             ((EditText) findViewById(R.id.et4)).getText().clear();
             return true;
+        }
+        if(id == R.id.swap_degrees){
+            setSystem("degree", (TextView)(findViewById(R.id.tv1)), (TextView)findViewById(R.id.tv2), (TextView)findViewById(R.id.tv3), (TextView)findViewById(R.id.tv4), (EditText)findViewById(R.id.et1), (EditText)findViewById(R.id.et2), (EditText)findViewById(R.id.et3), (EditText)findViewById(R.id.et4));
+            ((EditText) findViewById(R.id.et1)).getText().clear();
+            ((EditText) findViewById(R.id.et2)).getText().clear();
+            ((EditText) findViewById(R.id.et3)).getText().clear();
+            ((EditText) findViewById(R.id.et4)).getText().clear();
         }
 
         return super.onOptionsItemSelected(item);

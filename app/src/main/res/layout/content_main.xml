@@ -80,5 +80,12 @@
             android:text="Miles"
             android:textSize="24pt"
             android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/catpicture"
+            android:visibility="gone"
+            android:src="@drawable/cat"/>
+
 </LinearLayout>
 

@@ -8,4 +8,9 @@
         android:title="Switch Metric/Imperial"
         android:titleCondensed="spooked ya"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/swap_degrees"
+        android:orderInCategory="100"
+        android:title="Switch to temperature mode"
+        app:showAsAction="never"/>
 </menu>
