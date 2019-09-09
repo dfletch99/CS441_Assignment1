@@ -19,3 +19,6 @@ If the user enters a value directly into the cat text box and presses the "conve
 The edit text boxes will temporarily contain the string "C A T S", except the very first one, which will contain "m a s h e d p o t a t o". This is because the first picture is not actually of a cat, but of an internet-famous dog named Mashed Potato, due to his visual similarity to the food.
 
 To convert multiple values, the user must either press the "clear" button on the bottom right, or switch to a different mode, which will clear the boxes automatically.
+
+# Funtionality I'd like to add:
+Trim the white space around the cat pictures, as well as placing them directly behind the text. I believe this is done by using a layout other than LinearLayout.
