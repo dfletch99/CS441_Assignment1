@@ -1,91 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@layout/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
-        <EditText
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter a value in inches"
-            android:id="@+id/et1"
-            android:inputType="numberDecimal"
-            android:textSize="12pt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv1"
-            android:text="Inches"
-            android:textSize="24pt"
-            android:textStyle="bold"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter a value in feet"
-            android:id="@+id/et2"
-            android:inputType="numberDecimal"
-            android:textSize="12pt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv2"
-            android:text="Feet"
-            android:textSize="24pt"
-            android:textStyle="bold"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter a value in yards"
-            android:id="@+id/et3"
-            android:inputType="numberDecimal"
-            android:textSize="12pt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv3"
-            android:text="Yards"
-            android:textSize="24pt"
-            android:textStyle="bold"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter a value in miles"
-            android:id="@+id/et4"
-            android:inputType="numberDecimal"
-            android:textSize="12pt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv4"
-            android:text="Miles"
-            android:textSize="24pt"
-            android:textStyle="bold"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/catpicture"
-            android:visibility="gone"
-            android:src="@drawable/cat"/>
+            android:orientation="vertical">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter a value in inches"
+                    android:id="@+id/et1"
+                    android:inputType="numberDecimal"
+                    android:textSize="12pt"
+                    android:textColor="#FFFFCF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv1"
+                    android:text="Inches"
+                    android:textSize="22pt"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFCF"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/catpicture4"
+                    android:visibility="gone"
+                    android:src="@drawable/cat4"
+                    android:alpha=".99"
+                    />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter a value in feet"
+                    android:id="@+id/et2"
+                    android:inputType="numberDecimal"
+                    android:textSize="12pt"
+                    android:textColor="#FFFFCF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/catpicture3"
+                    android:visibility="gone"
+                    android:src="@drawable/cat3"
+                    android:alpha=".99"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv2"
+                    android:text="Feet"
+                    android:textSize="22pt"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFCF"
+                    />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter a value in yards"
+                    android:id="@+id/et3"
+                    android:inputType="numberDecimal"
+                    android:textSize="12pt"
+                    android:textColor="#FFFFCF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv3"
+                    android:text="Yards"
+                    android:textSize="22pt"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFCF"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/catpicture2"
+                    android:visibility="gone"
+                    android:src="@drawable/cat2"
+                    android:alpha=".99"
+                    />
 
-</LinearLayout>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter a value in miles"
+                    android:id="@+id/et4"
+                    android:inputType="numberDecimal"
+                    android:textSize="12pt"
+                    android:textColor="#FFFFCF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv4"
+                    android:text="Miles"
+                    android:textColor="#FFFFCF"
+                    android:textSize="22pt"
+                    android:textStyle="bold"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/catpicture"
+                    android:visibility="gone"
+                    android:src="@drawable/cat"
+                    android:alpha=".99"
+                    />
+        </LinearLayout>
+</ScrollView>
 

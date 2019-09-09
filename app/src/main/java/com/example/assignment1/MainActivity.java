@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         final TextView tv1 = findViewById(R.id.tv1), tv2 = findViewById(R.id.tv2), tv3 = findViewById(R.id.tv3), tv4 = findViewById(R.id.tv4);
         final EditText et1 = findViewById(R.id.et1), et2 = findViewById(R.id.et2), et3 = findViewById(R.id.et3), et4 = findViewById(R.id.et4);
         final ImageView img = (ImageView)findViewById(R.id.catpicture);
+        final ImageView img2 = (ImageView)findViewById(R.id.catpicture2);
+        final ImageView img3 = (ImageView)findViewById(R.id.catpicture3);
+        final ImageView img4 = (ImageView)findViewById(R.id.catpicture4);
 
         setSystem("imperial", tv1, tv2, tv3, tv4, et1, et2, et3, et4);
 
@@ -138,18 +141,21 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else{
                             cats = true;
-                            et1.setText("C A T S");
+                            et1.setText("m a s h e d p o t a t o");
                             et2.setText("C A T S");
                             et3.setText("C A T S");
                             et4.setText("C A T S");
                             img.setVisibility(View.VISIBLE);
+                            img2.setVisibility(View.VISIBLE);
+                            img3.setVisibility(View.VISIBLE);
+                            img4.setVisibility(View.VISIBLE);
                         }
                     }
                     if(!cats) {
                         et1.setText(String.format(Locale.US, "%.2f", tiny));
                         et2.setText(String.format(Locale.US, "%.2f", small));
                         et3.setText(String.format(Locale.US, "%.2f", medium));
-                        if (isImperial) {
+                        if (isImperial || inDegreeMode) {
                             et4.setText(String.format(Locale.US, "%.2f", large));
                         } else {
                             et4.setText(String.format(Locale.US, "%.9f", large));
